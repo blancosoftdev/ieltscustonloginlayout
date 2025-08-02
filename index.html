@@ -10,6 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
+
+    @font-face {
+      font-family: 'LoewNextBold';
+      src: url('fonts/LoewNext-Bold-BF63fd638abb9de.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'LoewNextMeduim';
+      src: url('fonts/LoewNext-Medium-BF63fd638a9ff86.otf') format('opentype');
+    }
+
     body {
       overflow: hidden;
     }
@@ -28,13 +39,31 @@
 
     .login {
       height: 100%;
-      padding: 100px 100px;
+      padding: 135px 100px;
       color: #154B89;
-      font-family: "LoewNextBold";
+      font-family: "LoewNextBold" , "sans-serif";
     }
+
+    .heading h1 {
+        font-family: "LoewNextBold", "sans-serif";
+      }
 
     .intro {
       display: none;
+    }
+
+    .entry-item label {
+      font-family: "LoewNextMeduim", "sans-serif";
+    }
+
+    input::placeholder {
+      font-family: "LoewNextMeduim", "sans-serif";
+    }
+
+    .divider h2 {
+      font-family: "LoewNextMeduim", "sans-serif";
+      text-align: center;
+      font-size: 16px;
     }
 
     h1,
@@ -101,7 +130,7 @@
       background-color: #154B89;
 
       /* Typography */
-      font-family: inherit;
+      font-family: "LoewNextMedium", sans-serif;
       font-size: 16px;
       font-weight: 600;
       line-height: 20px;
@@ -169,6 +198,17 @@
       span {
         color: #111827;
       }
+    }
+
+    @media screen and (max-width: 768px) {
+      .login-container {
+        height: 100dvh;
+        margin: 0;
+      }
+      .login {
+        padding: 50px 50px;
+      }
+      
     }
   </style>
 </head>
