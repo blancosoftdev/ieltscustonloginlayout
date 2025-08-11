@@ -77,7 +77,6 @@
 
     label {
       font-weight: 600;
-      display: none;
     }
 
     input {
@@ -205,6 +204,10 @@
     #GoogleExchange {
       background-color: #fff !important;
       color: #154B89 !important; 
+
+      &:focus {
+        outline: none;
+      }
     }
 
     @media screen and (max-width: 768px) {
