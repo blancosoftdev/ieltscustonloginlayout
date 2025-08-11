@@ -62,22 +62,38 @@
     }
 
     .divider h2 {
-      font-family: "LoewNextMeduim", "sans-serif";
+       font-family: "LoewNextMeduim", "sans-serif";
       text-align: center;
       font-size: 16px;
+      display: flex;
+      align-items: center;
+      margin: 15px;
+
+      &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 2px solid #ccc;
+        margin-left: 10px;
+      }
+      &::before {
+        content: "";
+        margin-right: 10px;
+        flex: 1;
+        border-bottom: 2px solid #ccc;
+      }
     }
 
     h1,
     h2 {
       font-style: normal;
-      font-weight: 700;
+      /* font-weight: 700; */
       font-size: 36px;
       line-height: 120%;
     }
 
-    label {
+    /* label {
       font-weight: 600;
-    }
+    } */
 
     input {
       /* Box Model */
@@ -210,6 +226,28 @@
         &:last-child {
           margin-bottom: 8px;
         }
+      }
+    }
+
+
+    #GoogleExchange {
+      background-color: #fff !important;
+      color: #154B89 !important; 
+      margin-top: 10px;
+      
+      &:focus {
+        outline: none;
+      }
+
+      &::before {
+        content:  '';
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin-bottom: 4px;
+        background: url("https://blancosoftdev.github.io/ieltscustonloginlayout/images/google-exchange.png") no-repeat center / contain;
+        vertical-align: middle;
+        margin-right: 7px;
       }
     }
 
