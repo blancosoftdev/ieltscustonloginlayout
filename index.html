@@ -201,6 +201,11 @@
       }
     }
 
+    #GoogleExchange {
+      background-color: #fff !important;
+      color: #154B89 !important; 
+    }
+
     @media screen and (max-width: 768px) {
       .login-container {
         height: 100dvh;
@@ -226,5 +231,17 @@
     </div>
   </div>
 </body>
+
+
+<script>
+   const GoogleExchange = this.document.getElementById('GoogleExchange');
+    if (GoogleExchange) { 
+      const textContent = GoogleExchange.textContent;
+     GoogleExchange.innerHTML = `
+      <img style="width: 25px; margin-bottom: 5px" src="images/google-exchange.png" alt="Google Exchange" class="google-exchange-img"/>
+     ${textContent}
+     `;
+    }
+</script>
 
 </html>
