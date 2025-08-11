@@ -65,6 +65,18 @@
       font-family: "LoewNextMeduim", "sans-serif";
       text-align: center;
       font-size: 16px;
+      &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ccc;
+        margin-left: 10px;
+      }
+      &::before {
+        margin-right: 10px;
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ccc;
+      }
     }
 
     h1,
@@ -204,14 +216,15 @@
     #GoogleExchange {
       background-color: #fff !important;
       color: #154B89 !important; 
-
+      margin-top: 10px;
+      
       &:focus {
         outline: none;
       }
 
       &::before {
         content:  '';
-        display: inline-block; /* so it behaves like an image */
+        display: inline-block;
         width: 25px;
         height: 25px;
         margin-bottom: 4px;
