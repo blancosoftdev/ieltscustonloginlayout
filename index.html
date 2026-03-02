@@ -1,274 +1,431 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Test & Score</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://ielts.testandscore.com/images/Logo.svg"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      data-preload="true"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+      data-preload="true"
+    />
 
-<head>
-  <meta charset="utf-8">
-  <title>Test & Score</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="https://ielts.testandscore.com/images/Logo.svg">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" data-preload="true">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" data-preload="true">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" data-preload="true">
-  <style>
-
-    @font-face {
-      font-family: 'LoewNextBold';
-      src: url('https://blancosoftdev.github.io/ieltscustonloginlayout/fonts/LoewNext-Bold-BF63fd638abb9de.otf') format('opentype');
-    }
-
-    @font-face {
-      font-family: 'LoewNextMeduim';
-      src: url('https://blancosoftdev.github.io/ieltscustonloginlayout/fonts/LoewNext-Medium-BF63fd638a9ff86.otf') format('opentype');
-    }
-
-  
-    body {
-      overflow: hidden;
-    }
-
-    .login-container {
-      background-color: #F1F5F9;
-    }
-
-    .cover {
-      background-size: cover;
-      background-image: linear-gradient(0deg, rgba(10, 36, 66, 0.75), rgba(10, 36, 66, 0.75)), url('https://ielts.testandscore.com/images/cover-login.jpg');
-      background-repeat: no-repeat;
-      background-position: center;
-      min-height: 960px;
-    }
-
-    .login {
-      height: 100%;
-      padding: 50px 100px;
-      color: #154B89;
-      font-family: "LoewNextBold" , "sans-serif";
-    }
-
-    .heading h1 {
-        font-family: "LoewNextBold", "sans-serif";
+    <style>
+      @font-face {
+        font-family: "LoewNextBold";
+        src: url("https://blancosoftdev.github.io/ieltscustonloginlayout/fonts/LoewNext-Bold-BF63fd638abb9de.otf")
+          format("opentype");
       }
 
-    .intro {
-      display: none;
-    }
-
-    .entry-item label {
-      font-family: "LoewNextMeduim", "sans-serif";
-    }
-
-    input::placeholder {
-      font-family: "LoewNextMeduim", "sans-serif";
-    }
-
-    .divider h2 {
-      font-family: "LoewNextMeduim", "sans-serif";
-      text-align: center;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      margin: 15px;
-
-      &::after {
-        content: "";
-        flex: 1;
-        border-bottom: 2px solid #ccc;
-        margin-left: 10px;
+      @font-face {
+        font-family: "LoewNextMeduim";
+        src: url("https://blancosoftdev.github.io/ieltscustonloginlayout/fonts/LoewNext-Medium-BF63fd638a9ff86.otf")
+          format("opentype");
       }
-      &::before {
-        content: "";
-        margin-right: 10px;
-        flex: 1;
-        border-bottom: 2px solid #ccc;
+
+      :root {
+        --primary: #326ce2;
+        --primary-light: #e4effb;
+        --primary-dark: #0d3059;
+        --white: #fff;
+        --black: #000;
+        --text-medium: #535353;
+        --text-light: #d5d5d5;
+        --secondary: #027d08;
       }
-    }
 
-    h1,
-    h2 {
-      font-style: normal;
-      /* font-weight: 700; */
-      font-size: 36px;
-      line-height: 120%;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    /* label {
-      font-weight: 600;
-    } */
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        height: 100%;
+        min-height: 100vh;
+        background:
+          linear-gradient(rgba(7, 35, 68, 0.85), rgba(1, 13, 27, 0.85)),
+          url("https://images.unsplash.com/photo-1673515324889-812ebdd8b434?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+            center/cover no-repeat;
+      }
 
-    input {
-      /* Box Model */
-      box-sizing: border-box;
-      width: 100%;
-      padding: 12px;
-      margin: 0;
-      border: 1px solid rgb(188, 209, 239);
-      border-radius: var(--bs-border-radius, 0.375rem);
-      box-shadow: 0 0 0 1.53899px rgba(13, 110, 253, 0.098);
+      /* Main Card - Compact */
+      .login-card {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 28px 32px;
+        width: 100%;
+        max-width: 420px;
+        box-shadow:
+          0 10px 40px -10px rgba(0, 0, 0, 0.15),
+          0 4px 12px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
 
-      /* Typography */
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
-      letter-spacing: 0;
-      color: var(--bs-body-color);
-      text-align: start;
-      text-transform: none;
-
-      /* Display */
-      display: block;
-      background-color: var(--bs-body-bg, #fff);
-      background-clip: padding-box;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-
-      /* Transition */
-      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
-      /* Other */
-      cursor: text;
-
-
-      margin-top: 10px;
-      margin-bottom: 8px;
-    }
-
-    button {
-      /* Box Model */
-      box-sizing: border-box;
-      width: 100%;
-      height: 44px;
-      margin: 0;
-      padding: 0.375rem 0.75rem;
-      border: 1px solid transparent;
-      border-radius: 6px;
-      border-color: rgba(255, 255, 255, 0.365);
-      background-color: #154B89;
-
-      /* Typography */
-      font-family: "LoewNextMedium", sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 20px;
-      letter-spacing: 0;
-      text-align: center;
-      text-transform: none;
-
-      /* Display */
-      display: inline-block;
-      vertical-align: middle;
-
-      /* Interaction */
-      cursor: pointer;
-      -webkit-user-select: none;
-      user-select: none;
-      -webkit-appearance: button;
-      appearance: button;
-
-      /* Effects */
-      color: white;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        0 1px 1px rgba(0, 0, 0, 0.075);
-      transition: color 0.15s ease-in-out,
-        background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out,
-        box-shadow 0.15s ease-in-out;
-
-      margin-bottom: 8px;
-    }
-
-    button:hover {
-      background-color: #0D3059;
-      color: var(--bs-btn-hover-color);
-      border-color: var(--bs-btn-hover-border-color);
-    }
-
-    button:disabled {
-      opacity: 0.65;
-      cursor: default;
-    }
-
-    .or {
-      position: relative;
-
-      &::after {
+      /* Subtle gradient accent at top */
+      .login-card::before {
         content: "";
-        height: 1px;
-        border: 1px solid #D1D5DB;
-        width: 40%;
         position: absolute;
-        bottom: 50%;
-        right: 11px;
+        top: 0px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
       }
 
-      &::before {
-        content: "";
-        height: 1px;
-        border: 1px solid #D1D5DB;
-        width: 40%;
-        position: absolute;
-        bottom: 50%;
-        left: 11px;
+      /* Logo - Smaller */
+      .logo-section {
+        text-align: center;
+        margin-bottom: 20px;
       }
 
-      span {
-        color: #111827;
+      .logo-section img {
+        height: 40px;
+        width: auto;
+        transition: transform 0.3s ease;
       }
-    }
 
-    #GoogleExchange {
-      background-color: #fff !important;
-      color: #154B89 !important; 
-      margin-top: 10px;
-      
-      &:focus {
+      .logo-section:hover img {
+        transform: scale(1.05);
+      }
+
+      /* API Content Styling - Compact */
+      #api .heading h1 {
+        font-family: "LoewNextBold", "Inter", sans-serif;
+        font-size: 32px;
+        color: var(--primary-dark);
+        text-align: center;
+        margin-bottom: 0px;
+        font-weight: 800;
+        line-height: 1.5;
+      }
+
+      #api .intro h2 {
+        display: none;
+      }
+
+      /* Social Button - Compact */
+      .claims-provider-list-buttons.social {
+        margin-bottom: 16px;
+      }
+
+      #GoogleExchange {
+        width: 100%;
+        padding: 12px 20px;
+        background: #ffffff;
+        border: 1.5px solid #e5e7eb !important;
+        border-radius: 10px;
+        color: var(--black);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: "Inter", sans-serif;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      #GoogleExchange:hover {
+        border-color: var(--primary) !important;
+        background: var(--primary-light);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(50, 108, 226, 0.15);
+      }
+      #GoogleExchange:focus {
         outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 1px rgba(50, 108, 226, 0.2);
       }
-
-      &::before {
-        content:  '';
+      /* Add Google logo before text */
+      #GoogleExchange::before {
+        content: "";
+        width: 18px;
+        height: 18px;
+        background-image: url("https://blancosoftdev.github.io/ieltscustonloginlayout/images/google-exchange.png");
+        background-size: contain;
+        background-repeat: no-repeat;
         display: inline-block;
-        width: 25px;
-        height: 25px;
-        margin-bottom: 4px;
-        background: url("https://blancosoftdev.github.io/ieltscustonloginlayout/images/google-exchange.png") no-repeat center / contain;
-        vertical-align: middle;
-        margin-right: 7px;
       }
-    }
+      /* Divider - Compact */
+      #api .divider {
+        display: flex;
+        align-items: center;
+        margin: 16px 0;
+        color: var(--text-light);
+      }
 
-    #createAccount {
-      margin-left: 5px;
-    }
+      #api .divider::before,
+      #api .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--text-light),
+          transparent
+        );
+      }
 
-    @media screen and (max-width: 768px) {
-      .login-container {
-        height: 100dvh;
+      #api .divider h2 {
+        padding: 0 12px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-medium);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Hide duplicate intro heading inside form */
+      #api form .intro {
+        display: none;
+      }
+      #api .intro {
+        display: none;
+      }
+      #api ul {
+        padding-left: 0;
+        list-style: none;
+      }
+      /* Form Inputs - Compact */
+      #api .entry-item {
+        margin-bottom: 14px;
+      }
+
+      #api .entry-item label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+      }
+      #api .localAccount .divider {
+        display: none;
+      }
+      #api input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 10px;
+        font-size: 14px;
+        color: var(--black);
+        background: #fafafa;
+        transition: all 0.2s ease;
+        font-family: "Inter", sans-serif;
+        height: 44px;
+      }
+
+      #api input:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(50, 108, 226, 0.1);
+      }
+
+      #api input::placeholder {
+        color: #9ca3af;
+      }
+
+      /* Password Row */
+      #api .password-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+
+      #api #forgotPassword {
+        font-size: 12px;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      #api #forgotPassword:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
+      #api .helpLink.tiny {
+        display: none;
+      }
+      #api .buttons button {
+        font-size: 14px;
+        padding: 6px 14px;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        color: var(--primary);
+        margin-top: 6px;
+        transition: all 0.25s ease;
+        width: 100%;
+      }
+
+      #api .buttons button:hover {
+        background: var(--primary-light);
+        border-color: var(--primary);
+      }
+
+      #api button#continue {
+        width: 100%;
+        height: 38px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 10px;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 6px -1px rgba(50, 108, 226, 0.25);
+      }
+
+      #api button#continue:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 16px -4px rgba(50, 108, 226, 0.3);
+      }
+      /* Submit Button - Compact */
+      #api button#next {
+        width: 100%;
+        padding: 12px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-top: 4px;
+        font-family: "Inter", sans-serif;
+        box-shadow: 0 4px 6px -1px rgba(50, 108, 226, 0.2);
+        height: 44px;
+      }
+
+      #api button#next:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 16px -4px rgba(50, 108, 226, 0.3);
+      }
+
+      /* Create Account - Compact */
+      #api .create {
+        text-align: center;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #f3f4f6;
+      }
+
+      #api .create p {
+        font-size: 13px;
+        color: var(--text-medium);
         margin: 0;
       }
-      .login {
-        padding: 50px 50px;
-      }
-      
-    }
-  </style>
-</head>
 
-<body>
-  <div class="row login-container">
-    <div class="d-md-block d-none col-12 col-md-6 cover">
-    </div>
-    <div class="col-12 col-md-6 login">
-      <div class="mb-4 d-flex justify-content-center">
-        <a href="https://testandscore.com"><img src="https://ielts.testandscore.com/images/Logo.svg" alt="logo"></a>
+      #api #createAccount {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 4px;
+        transition: color 0.2s;
+      }
+
+      #api #createAccount:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
+
+      /* Error States */
+      #api .error {
+        color: #dc2626;
+        font-size: 12px;
+        margin-top: 4px;
+        font-weight: 500;
+      }
+
+      #api input.error {
+        border-color: #dc2626;
+        background: #fef2f2;
+      }
+
+      /* Working indicator */
+      #api .working {
+        display: none;
+      }
+
+      /* Responsive - Allow scroll on mobile */
+      @media (max-width: 480px) {
+        body {
+          padding: 12px;
+          padding-top: 20px;
+        }
+
+        .login-card {
+          padding: 24px 20px;
+        }
+
+        #api .heading h1 {
+          font-size: 22px;
+        }
+      }
+
+      /* Smooth entry animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .login-card {
+        animation: fadeIn 0.5s ease-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-card">
+      <div class="logo-section">
+        <a href="https://testandscore.com">
+          <img
+            src="https://ielts.testandscore.com/images/Logo.svg"
+            alt="Test & Score"
+          />
+        </a>
       </div>
-      
+
       <div id="api"></div>
     </div>
-  </div>
-
-</body>
-
-
+  </body>
 </html>
